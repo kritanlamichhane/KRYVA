@@ -1,0 +1,34 @@
+<!-- ── Sell Confirm Modal ───────────────── -->
+<div class="modal fade" id="Modal-SellingConfirm-{{ owned_item.id }}"
+     tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sell — {{ owned_item.name }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+          {{ selling_form.hidden_tag() }}
+          <p class="modal-confirm-text">
+            Return <strong>{{ owned_item.name }}</strong> to the market for
+            <span style="color:#c9a84c">{{ owned_item.price }} USD</span>?
+          </p>
+          <p class="modal-sub-text">This item will be listed for other buyers.</p>
+          <br>
+          <input id="sold_item" name="sold_item" type="hidden" value="{{ owned_item.name }}">
+          {{ selling_form.submit(class="btn-kryva btn-kryva-danger",
+             style="width:100%;padding:11px;font-size:10px;letter-spacing:0.22em") }}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button"
+                class="btn-kryva"
+                style="padding:8px 22px;font-size:9px"
+                data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

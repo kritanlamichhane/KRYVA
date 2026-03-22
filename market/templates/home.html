@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Kryva — The Luxury Market{% endblock %}
+{% block content %}
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">New Collection</p>
+    <h1 class="hero-title">The <em>Kryva</em><br>Market</h1>
+    <p class="hero-tagline">Where exclusivity meets desire.</p>
+    <a class="hero-cta" href="{{ url_for('market_page') }}">Explore Now</a>
+  </div>
+  <div class="hero-footer">Kryva &mdash; Luxury Redefined</div>
+</section>
+
+{% endblock %}

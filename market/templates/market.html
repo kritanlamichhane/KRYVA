@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Kryva — Market{% endblock %}
+{% block content %}
+
+<div class="market-wrap">
+
+  <!-- ── LEFT: MARKET TABLE ────────────── -->
+  <div>
+    <div class="section-header">
+      <p class="section-eyebrow">Available Now</p>
+      <h2 class="section-title">The Market</h2>
+      <p class="section-sub">Select a piece to view details or acquire.</p>
+    </div>
+
+    <table class="kryva-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Barcode</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          {% include 'includes/items_modals.html' %}
+          <tr>
+            <td class="td-id">{{ item.id }}</td>
+            <td class="td-name">{{ item.name }}</td>
+            <td class="td-barcode">{{ item.barcode }}</td>
+            <td class="td-price">{{ item.price }} <span style="font-size:9px;color:var(--muted)">USD</span></td>
+            <td>
+              <div class="table-actions">
+                <button class="btn-kryva" style="padding:6px 14px;font-size:9px"
+                        data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">Details</button>
+                <button class="btn-kryva btn-kryva-fill" style="padding:6px 14px;font-size:9px"
+                        data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Acquire</button>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── RIGHT: OWNED ITEMS ──────────── -->
+  <div>
+    <div class="section-header">
+      <p class="section-eyebrow">Your Collection</p>
+      <h2 class="section-title">Owned Items</h2>
+      <p class="section-sub">Place an item back on the market.</p>
+    </div>
+
+    <div class="owned-grid">
+      {% for owned_item in owned_items %}
+        {% include 'includes/owned_items_modals.html' %}
+        <div class="owned-card">
+          <p class="owned-card-name">{{ owned_item.name }}</p>
+          <p class="owned-card-price">{{ owned_item.price }} USD</p>
+          <button class="btn-kryva btn-kryva-danger" style="padding:6px 16px;font-size:9px;width:100%"
+                  data-toggle="modal" data-target="#Modal-SellingConfirm-{{ owned_item.id }}">
+            Sell
+          </button>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}

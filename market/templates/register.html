@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Kryva — Register{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-monogram">Kryva</div>
+    <div class="auth-divider"></div>
+    <h1 class="auth-title">Create Account</h1>
+
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.username.label() }}
+        {{ form.username(class="form-control", placeholder="Username") }}
+      </div>
+      <div class="form-group">
+        {{ form.email_address.label() }}
+        {{ form.email_address(class="form-control", placeholder="Email Address") }}
+      </div>
+      <div class="form-group">
+        {{ form.password1.label() }}
+        {{ form.password1(class="form-control", placeholder="Password") }}
+      </div>
+      <div class="form-group">
+        {{ form.password2.label() }}
+        {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+      </div>
+      {{ form.submit(class="btn-submit") }}
+    </form>
+
+    <div class="auth-footer">
+      Already have an account?
+      <a href="{{ url_for('login_page') }}">Sign in</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
