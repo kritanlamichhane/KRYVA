@@ -1,4 +1,4 @@
-# Flask Market
+# KRYVA
 
 A simple market application built with Flask, allowing users to register, login, and trade items.
 
